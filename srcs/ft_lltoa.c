@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_lltoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thule <thule@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/29 01:42:47 by thule             #+#    #+#             */
-/*   Updated: 2021/12/05 21:44:14 by thule            ###   ########.fr       */
+/*   Created: 2022/03/21 14:59:43 by thule             #+#    #+#             */
+/*   Updated: 2022/03/22 09:14:36 by thule            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	count_len(long n)
+static int	count_len(long long int n)
 {
 	int	count;
 
@@ -30,39 +30,42 @@ static int	count_len(long n)
 	return (count);
 }
 
-static long	ft_abs(long n)
+static void	make_string(char *str, int len, long long int n)
 {
+	int	sign;
+
+	sign = 0;
 	if (n < 0)
 	{
+		sign = -1;
 		n = -n;
 	}
-	return (n);
+	while (len >= 1)
+	{
+		str[len] = (n % 10) + 48;
+		n = n / 10;
+		len--;
+	}
+	if (sign)
+		str[len] = '-';
+	else
+		str[len] = (n % 10) + 48;
 }
 
-char	*ft_itoa(int n)
+char	*ft_lltoa(long long int n)
 {
+	char	*str;
 	int		len;
-	char	*new;
-	int		sign;
 
-	len = count_len(n) - 1;
-	new = ft_strnew(len + 1);
-	sign = 0;
-	if (new)
+	str = NULL;
+	if (n == LLONG_MIN)
+		str = ft_strdup("-9223372036854775808");
+	else
 	{
-		if (n < 0)
-			sign = 1;
-		while (len >= 1)
-		{
-			new[len] = (ft_abs(n) % 10) + 48;
-			n = n / 10;
-			len--;
-		}
-		if (sign)
-			new[len] = '-';
-		else
-			new[len] = (ft_abs(n) % 10) + 48;
-		return (new);
+		len = count_len(n) - 1;
+		str = ft_strnew(len + 1);
+		if (str)
+			make_string(str, len, n);
 	}
-	return (NULL);
+	return (str);
 }

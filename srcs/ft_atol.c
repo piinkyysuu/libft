@@ -1,20 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thle <thle@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 19:30:43 by thle              #+#    #+#             */
-/*   Updated: 2021/11/11 14:01:25 by thle             ###   ########.fr       */
+/*   Created: 2022/07/01 15:01:45 by thule             #+#    #+#             */
+/*   Updated: 2022/09/12 12:23:45 by thle             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(int c)
+long	ft_atol(const char *str)
 {
-	if (ft_isalpha(c) || ft_isdigit(c))
-		return (1);
-	return (0);
+	unsigned long	acc;
+	short int		sign;
+
+	sign = 1;
+	acc = 0;
+	while (ft_isspace(*str))
+		str++;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sign = -1;
+		str++;
+	}
+	while (ft_isdigit(*str) && *str)
+	{
+		acc = acc * 10 + (*str - 48);
+		str++;
+	}
+	return (acc * sign);
 }

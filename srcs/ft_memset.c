@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thule <thule@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/08 12:10:55 by thule             #+#    #+#             */
-/*   Updated: 2021/11/08 20:38:23 by thule            ###   ########.fr       */
+/*   Created: 2021/11/15 18:19:07 by thule             #+#    #+#             */
+/*   Updated: 2022/03/11 18:36:24 by thule            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	size_t	count;
+	size_t	index;
+	char	*str;
 
-	count = 0;
-	while (*s)
+	index = 0;
+	str = (char *) b;
+	while (index < len)
 	{
-		s++;
-		count++;
+		*str = (char)c;
+		index++;
+		str++;
 	}
-	return (count);
+	return (b);
 }

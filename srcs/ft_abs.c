@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thule <thule@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/15 18:46:11 by thule             #+#    #+#             */
-/*   Updated: 2021/11/15 19:02:24 by thule            ###   ########.fr       */
+/*   Created: 2022/04/19 23:34:33 by thule             #+#    #+#             */
+/*   Updated: 2022/06/23 14:05:45 by thule            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+long long int	ft_abs(long long int nbr)
 {
-	size_t	index;
-
-	index = 0;
-	while (index < n)
-	{
-		((char *)s)[index] = '\0';
-		index++;
-	}
+	if (nbr < 0)
+		return (-nbr);
+	return (nbr);
 }
