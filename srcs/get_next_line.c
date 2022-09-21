@@ -6,11 +6,11 @@
 /*   By: thule <thule@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 16:16:36 by thule             #+#    #+#             */
-/*   Updated: 2022/09/21 13:51:43 by thule            ###   ########.fr       */
+/*   Updated: 2022/09/21 14:01:57 by thule            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 static	int	create_line(char **holder, char **line)
 {
